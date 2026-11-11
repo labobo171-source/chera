@@ -1,0 +1,13 @@
+{
+  "name": "CHERA Music Player",
+  "short_name": "CHERA",
+  "description": "پخش‌کننده موسیقی CHERA",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080b18",
+  "theme_color": "#080b18",
+  "icons": []
+}
