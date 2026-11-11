@@ -20,3 +20,8 @@ A website cannot silently scan all phone storage. The user must select files or 
 
 ## Development
 This is the initial static HTML/CSS/JavaScript PWA prototype. Test on Android Chrome and desktop browsers before production deployment.
+
+
+## Enable GitHub Pages
+The repository's Actions integration currently cannot enable Pages automatically. In the repository, open **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**, and save. The deployment workflow will then publish the site after a push to `main`.
+
