@@ -1,5 +1,5 @@
-const CACHE = "chera-shell-v1";
-const SHELL = ["./", "./index.html", "./manifest.webmanifest"];
+const CACHE = "chera-shell-v2";
+const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)));
   self.skipWaiting();
