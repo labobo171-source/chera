@@ -74,7 +74,7 @@ $('driveBtn').onclick=()=>{$('drive').classList.add('on');$('drive').scrollIntoV
 if('mediaSession'in navigator){navigator.mediaSession.setActionHandler('play',play);navigator.mediaSession.setActionHandler('pause',pause);navigator.mediaSession.setActionHandler('previoustrack',previous);navigator.mediaSession.setActionHandler('nexttrack',next)}
 const canvas=$('viz'),g=canvas.getContext('2d');function resize(){let dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);g.setTransform(dpr,0,0,dpr,0,0)}new ResizeObserver(resize).observe(canvas);resize();
 function draw(){raf=requestAnimationFrame(draw);let w=canvas.clientWidth,h=canvas.clientHeight;g.clearRect(0,0,w,h);let data=new Uint8Array(analyser?analyser.frequencyBinCount:64);if(analyser)analyser.getByteFrequencyData(data);else for(let i=0;i<data.length;i++)data[i]=8+Math.sin(Date.now()/500+i)*5;let cx=w/2,cy=h/2,rad=Math.min(w,h)*.34;for(let i=0;i<64;i++){let v=data[i]||0,a=i/64*Math.PI*2-Math.PI/2,len=8+v*.34;g.beginPath();g.moveTo(cx+Math.cos(a)*rad,cy+Math.sin(a)*rad);g.lineTo(cx+Math.cos(a)*(rad+len),cy+Math.sin(a)*(rad+len));g.strokeStyle=i%2?'#00e5ff':'#9878ff';g.globalAlpha=.25+v/350;g.lineWidth=2;g.stroke()}g.globalAlpha=1}draw();
-window.addEventListener('beforeunload',()=>{cancelAnimationFrame(raf);tracks.forEach(t=>URL.revokeObjectURL(t.url))});
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')) navigator.serviceWorker.register('./sw.js').catch(()=>{});\nwindow.addEventListener('beforeunload',()=>{cancelAnimationFrame(raf);tracks.forEach(t=>URL.revokeObjectURL(t.url))});
 })();
 </script>
 </body></html>
